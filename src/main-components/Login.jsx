@@ -11,7 +11,6 @@ function Login() {
     setError(''); // Reset error message
 
     try {
-        console.log(config.backend)
       const response = await fetch(`${config.backend}/users/login`, {
         method: 'POST',
         headers: {
@@ -30,7 +29,7 @@ function Login() {
         // Optionally redirect the user
         window.location.href = '/';
       } else {
-        setError(data.message || 'Login failed. Please try again.');
+        setError(data.error || 'Login failed. Please try again.');
       }
     } catch (err) {
       setError('An error occurred. Please try again.');

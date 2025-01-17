@@ -1,7 +1,9 @@
 function Navbar() {
     return(
         <>
-            <h1>EXAMIVERSE</h1>
+            <nav>
+                <h1>EXAMiVERSE</h1>
+            </nav>
         </>
     )
 }
