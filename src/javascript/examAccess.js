@@ -49,6 +49,24 @@ async function getExcel(groupId, examId, buttonId) {
         excelButton.innerText = 'Download Entries Excel';
     } else {
         // For an exam group:
+        const response = await fetch(`${config.backend}/exam-groups/${groupId}/excel`, {
+            method: 'GET',
+            headers: {
+                'authorization': localStorage.getItem('accessToken'),
+                'x-refresh-token': localStorage.getItem('refreshToken'),
+            },
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            const p = document.createElement('p');
+            p.innerText = errorData.error;
+            return;
+        }
+
+        const data = await response.json();
+        downloadExcel(data.result.fileName, data.result.buffer);
+        excelButton.innerText = 'Download Entries Excel';
     }
 }
 

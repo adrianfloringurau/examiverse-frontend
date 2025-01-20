@@ -49,7 +49,7 @@ function Home() {
     return (
         <>
             <Navbar />
-            { examGroups.isEditor && <Link to="#">Create an Exam Group</Link> }
+            { examGroups.isEditor && <Link to="/exam-group/new">Create an Exam Group</Link> }
             <div>
                 {examGroups.data.map(({ examGroup }) => (
                     <ExamGroupCard key={examGroup.id} title={examGroup.title} description={examGroup.description} id={examGroup.id} />

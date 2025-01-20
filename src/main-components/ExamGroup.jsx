@@ -4,9 +4,12 @@ import { Link, useParams } from "react-router-dom";
 import NotFound from "./NotFound";
 import Navbar from "../partial-components/Navbar";
 import ExamCard from "../partial-components/ExamCard";
+import { getExcel } from "../javascript/examAccess";
 
 function ExamGroup() {
     const { groupId } = useParams();
+
+    const excelButtonId = "excelbutton";
 
     const [examGroup, setExamGroup] = useState({});
     const [exams, setExams] = useState([]);
@@ -70,7 +73,12 @@ function ExamGroup() {
                     <Navbar />
                     <h2>{examGroup.result.data.title}</h2>
                     <p>{examGroup.result.data.description}</p>
-                    { examGroup.result.isEditor && <Link to="#">Create an Exam</Link> }
+                    { examGroup.result.isEditor && (
+                        <>
+                            <button id={excelButtonId} onClick={() => getExcel(groupId, null, excelButtonId)}>Download Entries Excel</button>
+                            <Link to={`/exam-group/${groupId}/exam/new`}>Create an Exam</Link>
+                        </>
+                    ) }
                     <div>
                         {exams.map((exam) => (
                             <ExamCard
