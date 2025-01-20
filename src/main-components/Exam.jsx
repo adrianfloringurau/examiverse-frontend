@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { formatDate } from "../javascript/dateConverter";
 import NotFound from "./NotFound";
 import Navbar from "../partial-components/Navbar";
-import { createQR, getPassword } from "../javascript/examAccess";
+import { createQR, getExcel, getPassword } from "../javascript/examAccess";
 
 function Exam() {
     const { groupId, examId } = useParams();
@@ -13,6 +13,7 @@ function Exam() {
     const [error, setError] = useState('');
     const [isLoaded, setIsLoaded] = useState(false); // Track loading state
 
+    const excelButtonId = "excelbutton";
     const passwordDivId = "passwordcode";
     const passwordButtonId = "passwordbutton";
     const qrDivId = "qrcode";
@@ -71,7 +72,7 @@ function Exam() {
                         { exam.isEditor ? (
                             <>
                                 <div>
-                                    <Link to="#">Download Entries Excel</Link>
+                                    <button id={excelButtonId} onClick={() => getExcel(groupId, examId, excelButtonId)}>Download Entries Excel</button>
                                     <button id={passwordButtonId} onClick={() => getPassword(groupId, examId, passwordDivId, passwordButtonId)}>Show Password</button>
                                     <button id={qrButtonId} onClick={() => createQR(groupId, examId, qrDivId, qrButtonId)}>Show QR Code</button>
                                 </div>
