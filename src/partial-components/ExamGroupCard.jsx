@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Card(props) {
+function ExamGroupCard(props) {
     return(
         <>
             <div>
@@ -13,4 +13,4 @@ function Card(props) {
     )
 }
 
-export default Card;
+export default ExamGroupCard;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import config from '../config';
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import NotFound from "./NotFound";
 import Navbar from "../partial-components/Navbar";
 import ExamCard from "../partial-components/ExamCard";
@@ -8,6 +8,7 @@ import ExamCard from "../partial-components/ExamCard";
 function ExamGroup() {
     const { groupId } = useParams();
 
+    const [examGroup, setExamGroup] = useState({});
     const [exams, setExams] = useState([]);
     const [error, setError] = useState('');
     const [isLoaded, setIsLoaded] = useState(false); // Track loading state
@@ -17,7 +18,7 @@ function ExamGroup() {
         setIsLoaded(false); // Reset loaded state before fetching
 
         try {
-            const response = await fetch(`${config.backend}/exams/${groupId}`, {
+            const response1 = await fetch(`${config.backend}/exam-groups/${groupId}`, {
                 method: 'GET',
                 headers: {
                     'authorization': localStorage.getItem('accessToken'),
@@ -25,15 +26,26 @@ function ExamGroup() {
                 },
             });
 
-            if (!response.ok) {
+            const response2 = await fetch(`${config.backend}/exams/${groupId}`, {
+                method: 'GET',
+                headers: {
+                    'authorization': localStorage.getItem('accessToken'),
+                    'x-refresh-token': localStorage.getItem('refreshToken'),
+                },
+            });
+
+            if (!response1.ok || !response2.ok) {
                 const errorData = await response.json();
-                setError(errorData.error || 'Failed to load exam groups. Please try again.');
+                setError(errorData.error || 'Failed to load exam group. Please try again.');
                 window.location.href = '/';
                 return;
             }
 
-            const data = await response.json();
-            setExams(data);
+            const data1 = await response1.json();
+            setExamGroup(data1);
+            console.log(data1)
+            const data2 = await response2.json();
+            setExams(data2);
             setIsLoaded(true); // Mark as successfully loaded
         } catch (err) {
             setError('An error occurred. Please try again.');
@@ -56,6 +68,9 @@ function ExamGroup() {
             ) : (
                 <>
                     <Navbar />
+                    <h2>{examGroup.result.data.title}</h2>
+                    <p>{examGroup.result.data.description}</p>
+                    { examGroup.result.isEditor && <Link to="#">Create an Exam</Link> }
                     <div>
                         {exams.map((exam) => (
                             <ExamCard
@@ -63,6 +78,7 @@ function ExamGroup() {
                                 title={exam.title}
                                 description={exam.description}
                                 id={exam.id}
+                                groupId={exam.groupId}
                                 startTime={exam.startTime}
                                 endTime={exam.endTime}
                             />

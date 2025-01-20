@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import config from '../config';
 import Navbar from "../partial-components/Navbar";
-import Card from "../partial-components/Card";
+import ExamGroupCard from "../partial-components/ExamGroupCard";
+import { Link } from "react-router-dom";
 
 function Home() {
     const [examGroups, setExamGroups] = useState([]);
@@ -48,9 +49,10 @@ function Home() {
     return (
         <>
             <Navbar />
+            { examGroups.isEditor && <Link to="#">Create an Exam Group</Link> }
             <div>
-                {examGroups.map(({ examGroup }) => (
-                    <Card key={examGroup.id} title={examGroup.title} description={examGroup.description} id={examGroup.id} />
+                {examGroups.data.map(({ examGroup }) => (
+                    <ExamGroupCard key={examGroup.id} title={examGroup.title} description={examGroup.description} id={examGroup.id} />
                 ))}
             </div>
         </>

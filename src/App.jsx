@@ -4,6 +4,7 @@ import Home from './main-components/Home';
 import NotFound from './main-components/NotFound';
 import Login from './main-components/Login';
 import ExamGroup from './main-components/ExamGroup';
+import Exam from './main-components/Exam';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,7 +15,7 @@ function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Home />} />
       <Route path='/exam-group/:groupId' element={<ExamGroup />} />
-      <Route path='/exam-group/:groupId/exam/:examId' element={<Home />} />
+      <Route path='/exam-group/:groupId/exam/:examId' element={<Exam />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
   );
