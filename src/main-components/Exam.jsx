@@ -5,6 +5,7 @@ import { formatDate } from "../javascript/dateConverter";
 import NotFound from "./NotFound";
 import Navbar from "../partial-components/Navbar";
 import { createQR, getExcel, getPassword } from "../javascript/examAccess";
+import '../css/cards.css';
 
 function Exam() {
     const { groupId, examId } = useParams();
@@ -51,7 +52,7 @@ function Exam() {
             if (!response.ok) {
                 const errorData = await response.json();
                 setError(errorData.error || 'Failed to load exam. Please try again.');
-                console.log(errorData.error)
+                console.error(errorData.error)
                 window.location.href = '/';
                 return;
             }
@@ -108,33 +109,33 @@ function Exam() {
             ) : (
                 <>
                     <Navbar />
-                    <div>
-                        <h1>{exam.title}</h1>
-                        <h2>{exam.desciption}</h2>
-                        <h3>{formatDate(exam.startTime)} - {formatDate(exam.endTime)}</h3>
-
-                        <p>Status: {isExamOpen ? 'OPEN' : 'CLOSED'}</p>
-
+                    <div className="cards-container dir-column">
+                        <div className="card no-hover">
+                            <p className="title">{exam.title}</p>
+                            <p className="description">{exam.description}</p>
+                            <p className="date">{formatDate(exam.startTime)} - {formatDate(exam.endTime)}</p>
+                            <p className={`status ${isExamOpen ? 'active' : null}`}>Status: {isExamOpen ? 'OPEN' : 'CLOSED'}</p>
+                        </div>
+                    </div>
                         {exam.isEditor ? (
                             <>
-                                <div>
-                                    <button id={excelButtonId} onClick={() => getExcel(groupId, examId, excelButtonId)}>Download Entries Excel</button>
-                                    <button id={passwordButtonId} onClick={() => getPassword(groupId, examId, passwordDivId, passwordButtonId)}>Show Password</button>
-                                    <button id={qrButtonId} onClick={() => createQR(groupId, examId, qrDivId, qrButtonId)}>Show QR Code</button>
+                                <div className="centered">
+                                    <button className="action" id={excelButtonId} onClick={() => getExcel(groupId, examId, excelButtonId)}>Download Entries Excel</button>
+                                    <button className="action" id={passwordButtonId} onClick={() => getPassword(groupId, examId, passwordDivId, passwordButtonId)}>Show Password</button>
+                                    <button className="action" id={qrButtonId} onClick={() => createQR(groupId, examId, qrDivId, qrButtonId)}>Show QR Code</button>
                                 </div>
-                                <div>
+                                <div className="centered">
                                     <div id={passwordDivId}></div>
                                     <div id={qrDivId}></div>
                                 </div>
                             </>
                         ) : (
-                            <div>
+                            <div className="centered">
                                 <input type="text" id="password" value={password ? password : null} />
-                                <button id={signButtonId} onClick={() => sign()}>Sign</button>
+                                <button className="action" id={signButtonId} onClick={() => sign()}>Sign</button>
                                 <p id={signErrorId}></p>
                             </div>
                         )}
-                    </div>
                 </>
             )}
         </>

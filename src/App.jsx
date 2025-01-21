@@ -6,6 +6,7 @@ import ExamGroup from './main-components/ExamGroup';
 import Exam from './main-components/Exam';
 import ExamGroupForm from './main-components/ExamGroupForm';
 import ExamForm from './main-components/ExamForm';
+import './index.css';
 
 function App() {
   return (

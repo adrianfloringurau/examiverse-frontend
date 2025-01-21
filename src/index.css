@@ -1,0 +1,137 @@
+:root {
+    --web-bg-color: lightgray;
+    --main-bg-color: white;
+    --main-border-color: black;
+    --secondary-bg-color: lightblue;
+    --element-padding: 5px;
+    --element-margin: 3px;
+    --element-drastic-margin: 10px;
+    --tertiary-bg-color: lightyellow;
+    --navbar-bg: cyan;
+    --error-color: red;
+    --link-color: rgb(68, 0, 255);
+    --important-bg-color: red;
+}
+
+* {
+    box-sizing: border-box;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 300;
+}
+
+body {
+    margin: 0;
+}
+
+.full-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--web-bg-color);
+}
+
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-bg-color);
+    padding: 20px;
+    border: 2px none var(--main-border-color);
+}
+
+.shadow {
+    box-shadow: 5px 5px 20px var(--main-border-color);
+}
+
+.centered-container:nth-child(n) {
+    text-align: center;
+}
+
+.centered-container input[type=text], .centered-container input[type=password] {
+    background-color: var(--secondary-bg-color);
+    border:none 2px black;
+    padding: var(--element-padding);
+    margin: var(--element-margin);
+    width: 100%;
+}
+
+.centered-container button {
+    background-color: var(--tertiary-bg-color);
+    padding: var(--element-padding);
+    margin: var(--element-drastic-margin);
+    margin-bottom: var(--element-margin);
+    border: 2px double var(--main-border-color);
+}
+
+.centered-container button:hover {
+    background-color: var(--secondary-bg-color);
+    padding: var(--element-padding);
+    margin: var(--element-drastic-margin);
+    margin-bottom: var(--element-margin);
+    border: 2px double var(--main-border-color);
+}
+
+.centered-container label {
+    display: inline-block;
+    padding: var(--element-padding);
+    margin: var(--element-margin);
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.centered-container input[type=datetime-local] {
+    background-color: var(--secondary-bg-color);
+    border:none 2px black;
+    padding: var(--element-padding);
+    margin: var(--element-margin);
+    width: 100%;
+}
+
+.error {
+    color: var(--error-color);
+    font-weight: 900;
+    text-align: center;
+}
+
+.big {
+    font-size: 8em;
+    margin: 0;
+}
+
+.medium {
+    font-size: 5em;
+    margin: 0;
+}
+
+.small {
+    font-size: 2em;
+    margin: 0;
+}
+
+.link {
+    font-size: 1em;
+    color: var(--link-color);
+}
+
+.action {
+    background-color: gold;
+    display: inline-block;
+    padding: var(--element-padding);
+    margin: var(--element-drastic-margin);
+    text-align: center;
+    border: 2px double var(--main-border-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.98em;
+    color: black;
+    font-weight: 900;
+}
+
+.action:hover {
+    background-color: var(--important-bg-color);
+}
+
+.centered {
+    text-align: center;
+}

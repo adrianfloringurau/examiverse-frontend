@@ -3,6 +3,7 @@ import config from '../config';
 import Navbar from "../partial-components/Navbar";
 import ExamGroupCard from "../partial-components/ExamGroupCard";
 import { Link } from "react-router-dom";
+import '../css/cards.css';
 
 function Home() {
     const [examGroups, setExamGroups] = useState([]);
@@ -49,8 +50,8 @@ function Home() {
     return (
         <>
             <Navbar />
-            { examGroups.isEditor && <Link to="/exam-group/new">Create an Exam Group</Link> }
-            <div>
+            { examGroups.isEditor && <Link className="action" to="/exam-group/new">Create an Exam Group</Link> }
+            <div className="cards-container">
                 {examGroups.data.map(({ examGroup }) => (
                     <ExamGroupCard key={examGroup.id} title={examGroup.title} description={examGroup.description} id={examGroup.id} />
                 ))}

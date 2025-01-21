@@ -18,7 +18,8 @@ function ExamGroupForm() {
           'authorization': localStorage.getItem('accessToken'),
           'x-refresh-token': localStorage.getItem('refreshToken'),
         },
-        body: JSON.stringify({ title, description }),
+        body: description ? JSON.stringify({ title, description }) :
+        JSON.stringify({ title }),
       });
 
       const data = await response.json();
@@ -36,24 +37,23 @@ function ExamGroupForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="full-container">
+      <form className="centered-container shadow" onSubmit={handleSubmit}>
         <div>
-          <label>Title:</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
+            placeholder='Title'
           />
         </div>
         <div>
-          <label>Description:</label>
           <input
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            required
+            placeholder='Description'
           />
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}

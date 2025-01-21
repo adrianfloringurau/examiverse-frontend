@@ -1,0 +1,22 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 40px;
+    background-color: var(--navbar-bg);
+    padding: var(--element-padding);
+    margin-bottom: var(--element-drastic-margin);
+    position: sticky;
+    top: 0;
+    box-shadow: 5px 5px 10px var(--main-border-color);
+}
+
+nav a {
+    text-decoration: none;
+    padding: 0 var(--element-padding) 0 var(--element-padding);
+}
+
+nav #logo h1 {
+    font-size: 20px;
+}

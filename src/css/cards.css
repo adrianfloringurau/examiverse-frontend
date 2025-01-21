@@ -1,0 +1,71 @@
+.cards-container {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: var(--web-bg);
+    margin-bottom: 40px;
+}
+
+.dir-column {
+    flex-direction: column;
+}
+
+.cards-container div {
+    flex: 25%;
+    height: 100px;
+    margin: var(--element-drastic-margin);
+    padding: var(--element-padding);
+}
+
+
+.cards-container .card {
+    border: 1px solid var(--main-border-color);
+    background-color: var(--tertiary-bg-color);
+    box-shadow: 5px 5px 10px var(--main-border-color);
+    overflow: auto;
+    text-align: center;
+}
+
+.cards-container .card:hover {
+    background-color: var(--secondary-bg-color);
+}
+
+.cards-container .card.no-hover:hover {
+    background-color: var(--tertiary-bg-color);
+}
+
+.cards-container a {
+    text-decoration: none;
+    color: var(--link-color);
+}
+
+.cards-container .title {
+    font-size: 1.5em;
+    font-weight: 900;
+    margin: 0;
+}
+
+.cards-container .description {
+    font-size: 1em;
+    margin: 0;
+}
+
+.cards-container div.fit-content {
+    height: auto;
+}
+
+.cards-container .status {
+    color: red;
+    font-size: 1em;
+    margin: 0;
+}
+
+.cards-container .status.active {
+    color: green;
+}
+
+.cards-container .date {
+    font-size: 1em;
+    margin: 0;
+}

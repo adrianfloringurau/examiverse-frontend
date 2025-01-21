@@ -23,7 +23,7 @@ function ExamForm() {
                     authorization: localStorage.getItem('accessToken'),
                     'x-refresh-token': localStorage.getItem('refreshToken'),
                 },
-                body: JSON.stringify({ title, description, startTime, endTime, groupId, password }),
+                body: description ? JSON.stringify({ title, description, startTime, endTime, groupId, password }) : JSON.stringify({ title, startTime, endTime, groupId, password }),
             });
 
             const data = await response.json();
@@ -41,37 +41,39 @@ function ExamForm() {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className='full-container'>
+            <form className='centered-container shadow' onSubmit={handleSubmit}>
                 <div>
-                    <label>Title:</label>
                     <input
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         required
+                        placeholder='Title'
                     />
                 </div>
                 <div>
-                    <label>Description:</label>
                     <input
                         type="text"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        required
+                        placeholder='Description'
                     />
                 </div>
                 <div>
-                    <label>Start time:</label>
+                    <label>Start time</label>
+                    <br />
                     <input
                         type="datetime-local"
                         value={startTime}
                         onChange={(e) => setStartTime(e.target.value)}
                         required
+                        placeholder='STart time'
                     />
                 </div>
                 <div>
-                    <label>End time:</label>
+                    <label>End time</label>
+                    <br />
                     <input
                         type="datetime-local"
                         value={endTime}
@@ -80,12 +82,12 @@ function ExamForm() {
                     />
                 </div>
                 <div>
-                    <label>Password:</label>
                     <input
                         type="text"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
+                        placeholder='Password'
                     />
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>}

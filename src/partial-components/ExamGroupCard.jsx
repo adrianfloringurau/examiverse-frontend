@@ -5,8 +5,10 @@ function ExamGroupCard(props) {
         <>
             <div>
                 <Link to={`/exam-group/${props.id}`}>
-                    <h2>{props.title}</h2>
-                    <p>{props.description}</p>
+                    <div className="card">
+                        <p className="title">{props.title}</p>
+                        <p className="description">{props.description}</p>
+                    </div>
                 </Link>
             </div>
         </>
