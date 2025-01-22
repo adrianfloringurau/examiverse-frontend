@@ -12,12 +12,11 @@
 }
 
 .cards-container div {
-    flex: 25%;
+    flex: 22%;
     height: 100px;
     margin: var(--element-drastic-margin);
     padding: var(--element-padding);
 }
-
 
 .cards-container .card {
     border: 1px solid var(--main-border-color);
@@ -68,4 +67,10 @@
 .cards-container .date {
     font-size: 1em;
     margin: 0;
+}
+
+@media (max-width: 768px) {
+    .cards-container div {
+        flex: 47%;
+    }
 }
