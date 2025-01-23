@@ -17,9 +17,9 @@ function ExamCard(props) {
     };
 
     return (
-        <div>
+        <div className='card fit-content'>
             <Link to={`/exam-group/${props.groupId}/exam/${props.id}`}>
-                <div className='card fit-content'>
+                <div>
                     <p className='title'>{props.title}</p>
                     <p className='description'>{props.description}</p>
                     <p className={`status ${currentDate >= new Date(props.startTime) && currentDate <= new Date(props.endTime) ? 'active' : null}`}>Status: {currentDate >= new Date(props.startTime) && currentDate <= new Date(props.endTime) ? 'OPEN' : 'CLOSED'}</p>

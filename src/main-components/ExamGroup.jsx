@@ -71,18 +71,18 @@ function ExamGroup() {
             ) : (
                 <>
                     <Navbar />
-                    <div className="cards-container">
+                    <div className="cards-container dir-column">
                         <div className="card fit-content no-hover">
                             <h2>{examGroup.result.data.title}</h2>
                             <p>{examGroup.result.data.description}</p>
                         </div>
-                    </div>
-                    { examGroup.result.isEditor && (
-                        <>
+                        { examGroup.result.isEditor && (
+                        <div className="card fit-content no-hover">
                             <button className="action" id={excelButtonId} onClick={() => getExcel(groupId, null, excelButtonId)}>Download Entries Excel</button>
                             <Link className="action" to={`/exam-group/${groupId}/exam/new`}>Create an Exam</Link>
-                        </>
+                        </div>
                     ) }
+                    </div>
                     <div className="cards-container dir-column">
                         {exams.map((exam) => (
                             <ExamCard

@@ -116,26 +116,28 @@ function Exam() {
                             <p className="date">{formatDate(exam.startTime)} - {formatDate(exam.endTime)}</p>
                             <p className={`status ${isExamOpen ? 'active' : null}`}>Status: {isExamOpen ? 'OPEN' : 'CLOSED'}</p>
                         </div>
+                        <div className="card no-hover">
+                            {exam.isEditor ? (
+                                <>
+                                    <div className="centered">
+                                        <button className="action" id={excelButtonId} onClick={() => getExcel(groupId, examId, excelButtonId)}>Download Entries Excel</button>
+                                        <button className="action" id={passwordButtonId} onClick={() => getPassword(groupId, examId, passwordDivId, passwordButtonId)}>Show Password</button>
+                                        <button className="action" id={qrButtonId} onClick={() => createQR(groupId, examId, qrDivId, qrButtonId)}>Show QR Code</button>
+                                    </div>
+                                    <div className="centered">
+                                        <div id={passwordDivId}></div>
+                                        <div id={qrDivId}></div>
+                                    </div>
+                                </>
+                            ) : (
+                                <div className="centered">
+                                    <input type="text" id="password" value={password ? password : null} />
+                                    <button className="action" id={signButtonId} onClick={() => sign()}>Sign</button>
+                                    <p id={signErrorId}></p>
+                                </div>
+                            )}
+                        </div>
                     </div>
-                        {exam.isEditor ? (
-                            <>
-                                <div className="centered">
-                                    <button className="action" id={excelButtonId} onClick={() => getExcel(groupId, examId, excelButtonId)}>Download Entries Excel</button>
-                                    <button className="action" id={passwordButtonId} onClick={() => getPassword(groupId, examId, passwordDivId, passwordButtonId)}>Show Password</button>
-                                    <button className="action" id={qrButtonId} onClick={() => createQR(groupId, examId, qrDivId, qrButtonId)}>Show QR Code</button>
-                                </div>
-                                <div className="centered">
-                                    <div id={passwordDivId}></div>
-                                    <div id={qrDivId}></div>
-                                </div>
-                            </>
-                        ) : (
-                            <div className="centered">
-                                <input type="text" id="password" value={password ? password : null} />
-                                <button className="action" id={signButtonId} onClick={() => sign()}>Sign</button>
-                                <p id={signErrorId}></p>
-                            </div>
-                        )}
                 </>
             )}
         </>

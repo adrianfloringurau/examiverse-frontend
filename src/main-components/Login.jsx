@@ -62,7 +62,7 @@ function Login() {
           />
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit">Login</button>
+        <button type="submit" disabled={!username || !password}>Login</button>
       </form>
     </div>
   );

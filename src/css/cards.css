@@ -22,12 +22,22 @@
     padding: var(--element-padding);
 }
 
-.cards-container a {
+.dir-column.cards-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+.dir-column.cards-container .card {
+    max-width: none;
+    width: 100%;
+}
+
+.cards-container a, .cards-container {
     text-decoration: none;
     color: black;
 }
 
-body.dark-mode .cards-container a {
+body.dark-mode .cards-container a, body.dark-mode .cards-container {
     color: white;
 }
 
@@ -60,5 +70,4 @@ body.dark-mode .cards-container a {
 .cards-container .description {
     font-size: 1em;
     margin: var(--element-margin);
-    color: var(--main-border-color);
 }
