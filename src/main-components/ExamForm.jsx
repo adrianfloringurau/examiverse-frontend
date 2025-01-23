@@ -62,7 +62,6 @@ function ExamForm() {
                 </div>
                 <div>
                     <label>Start time</label>
-                    <br />
                     <input
                         type="datetime-local"
                         value={startTime}
@@ -73,7 +72,6 @@ function ExamForm() {
                 </div>
                 <div>
                     <label>End time</label>
-                    <br />
                     <input
                         type="datetime-local"
                         value={endTime}
@@ -91,7 +89,7 @@ function ExamForm() {
                     />
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-                <button type="submit">Create Exam</button>
+                <button type="submit" disabled={!title || !startTime || !endTime || !password}>Create Exam</button>
             </form>
         </div>
     );

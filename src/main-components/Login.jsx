@@ -25,6 +25,8 @@ function Login() {
         // Save token (or any relevant data) to localStorage
         localStorage.setItem('accessToken', data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
+        localStorage.setItem('username', data.user.username);
+        localStorage.setItem('role', data.user.role);
         alert('Login successful!');
         // Optionally redirect the user
         window.location.href = '/';

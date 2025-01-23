@@ -57,7 +57,7 @@ function ExamGroupForm() {
           />
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit">Create Exam Group</button>
+        <button type="submit" disabled={!title}>Create Exam Group</button>
       </form>
     </div>
   );

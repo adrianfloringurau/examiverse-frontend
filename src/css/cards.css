@@ -1,76 +1,64 @@
 .cards-container {
     display: flex;
-    justify-content: start;
+    justify-content: space-around;
     flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: var(--web-bg);
-    margin-bottom: 40px;
-}
-
-.dir-column {
-    flex-direction: column;
-}
-
-.cards-container div {
-    flex: 22%;
-    height: 100px;
-    margin: var(--element-drastic-margin);
-    padding: var(--element-padding);
+    gap: var(--element-drastic-margin);
+    padding: var(--element-drastic-margin);
+    background-color: var(--web-bg-color);
 }
 
 .cards-container .card {
+    flex: 1 1 calc(22% - var(--element-drastic-margin));
+    min-width: 250px;
+    max-width: 300px;
+    height: auto;
+    background-color: var(--main-bg-color);
     border: 1px solid var(--main-border-color);
-    background-color: var(--tertiary-bg-color);
-    box-shadow: 5px 5px 10px var(--main-border-color);
-    overflow: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
     text-align: center;
-}
-
-.cards-container .card:hover {
-    background-color: var(--secondary-bg-color);
-}
-
-.cards-container .card.no-hover:hover {
-    background-color: var(--tertiary-bg-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: var(--element-padding);
 }
 
 .cards-container a {
     text-decoration: none;
-    color: var(--link-color);
+    color: black;
+}
+
+body.dark-mode .cards-container a {
+    color: white;
+}
+
+.status {
+    color: red;
+}
+
+.status.active {
+    color: green;
+}
+
+.cards-container .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: var(--secondary-bg-color);
+}
+
+.cards-container .card.no-hover:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--main-bg-color);
 }
 
 .cards-container .title {
-    font-size: 1.5em;
-    font-weight: 900;
-    margin: 0;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin: var(--element-padding) 0;
 }
 
 .cards-container .description {
     font-size: 1em;
-    margin: 0;
-}
-
-.cards-container div.fit-content {
-    height: auto;
-}
-
-.cards-container .status {
-    color: red;
-    font-size: 1em;
-    margin: 0;
-}
-
-.cards-container .status.active {
-    color: green;
-}
-
-.cards-container .date {
-    font-size: 1em;
-    margin: 0;
-}
-
-@media (max-width: 768px) {
-    .cards-container div {
-        flex: 47%;
-    }
+    margin: var(--element-margin);
+    color: var(--main-border-color);
 }

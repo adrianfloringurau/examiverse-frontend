@@ -51,6 +51,7 @@ function Home() {
         <>
             <Navbar />
             { examGroups.isEditor && <Link className="action" to="/exam-group/new">Create an Exam Group</Link> }
+            { localStorage.getItem("role") === "admin" && <Link className="action" to="/register">Create a new User</Link> }
             <div className="cards-container">
                 {examGroups.data.map(({ examGroup }) => (
                     <ExamGroupCard key={examGroup.id} title={examGroup.title} description={examGroup.description} id={examGroup.id} />

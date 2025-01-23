@@ -1,27 +1,65 @@
 :root {
-    --web-bg-color: lightgray;
-    --main-bg-color: white;
-    --main-border-color: black;
-    --secondary-bg-color: lightblue;
-    --element-padding: 5px;
-    --element-margin: 3px;
-    --element-drastic-margin: 10px;
-    --tertiary-bg-color: lightyellow;
-    --navbar-bg: cyan;
-    --error-color: red;
-    --link-color: rgb(68, 0, 255);
-    --important-bg-color: red;
+    --light-web-bg-color: #f9f9f9;
+    --light-main-bg-color: #ffffff;
+    --light-main-border-color: #d6d6d6;
+    --light-secondary-bg-color: #e0f7fa;
+    --light-tertiary-bg-color: #ffecb3;
+    --light-navbar-bg: #0288d1;
+    --light-error-color: #e53935;
+    --light-link-color: #01579b;
+    --light-important-bg-color: #ffb300;
+
+    --dark-web-bg-color: #121212;
+    --dark-main-bg-color: #1e1e1e;
+    --dark-main-border-color: #4f4f4f;
+    --dark-secondary-bg-color: #263238;
+    --dark-tertiary-bg-color: #ff8f00;
+    --dark-navbar-bg: #37474f;
+    --dark-error-color: #f44336;
+    --dark-link-color: #29b6f6;
+    --dark-important-bg-color: #ffa000;
+
+    --element-padding: 10px;
+    --element-margin: 5px;
+    --element-drastic-margin: 15px;
+
+    /* Defaults to light mode */
+    --web-bg-color: var(--light-web-bg-color);
+    --main-bg-color: var(--light-main-bg-color);
+    --main-border-color: var(--light-main-border-color);
+    --secondary-bg-color: var(--light-secondary-bg-color);
+    --tertiary-bg-color: var(--light-tertiary-bg-color);
+    --navbar-bg: var(--light-navbar-bg);
+    --error-color: var(--light-error-color);
+    --link-color: var(--light-link-color);
+    --important-bg-color: var(--light-important-bg-color);
+}
+
+body.dark-mode {
+    --web-bg-color: var(--dark-web-bg-color);
+    --main-bg-color: var(--dark-main-bg-color);
+    --main-border-color: var(--dark-main-border-color);
+    --secondary-bg-color: var(--dark-secondary-bg-color);
+    --tertiary-bg-color: var(--dark-tertiary-bg-color);
+    --navbar-bg: var(--dark-navbar-bg);
+    --error-color: var(--dark-error-color);
+    --link-color: var(--dark-link-color);
+    --important-bg-color: var(--dark-important-bg-color);
 }
 
 * {
     box-sizing: border-box;
-    font-size: 15px;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 300;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    transition: all 0.3s ease-in-out;
 }
 
 body {
     margin: 0;
+    background-color: var(--web-bg-color);
+    color: var(--main-border-color);
+    line-height: 1.6;
 }
 
 .full-container {
@@ -37,107 +75,155 @@ body {
     flex-direction: column;
     background-color: var(--main-bg-color);
     padding: 20px;
-    border: 2px none var(--main-border-color);
+    border: 1px solid var(--main-border-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.shadow {
-    box-shadow: 5px 5px 20px var(--main-border-color);
-}
-
-.centered-container:nth-child(n) {
-    text-align: center;
-}
-
-.centered-container input[type=text], .centered-container input[type=password] {
-    background-color: var(--secondary-bg-color);
-    border:none 2px black;
-    padding: var(--element-padding);
-    margin: var(--element-margin);
+.centered-container input,
+.centered-container select,
+.centered-container button {
+    display: block;
     width: 100%;
+    max-width: 400px; /* Optional: restrict the max width */
+    margin: var(--element-margin) auto; /* Auto margin for centering */
+    padding: var(--element-padding);
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid var(--main-border-color);
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.centered-container label {
+    display: block;
+    width: 100%;
+    max-width: 400px; /* Optional: restrict the max width */
+    margin: var(--element-margin) auto; /* Auto margin for centering */
+    padding: var(--element-padding);
+    font-size: 1em;
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.centered-container select {
+    appearance: none; /* Optional: customize the dropdown look */
+    background: var(--main-bg-color);
+    color: var(--main-border-color);
+    padding-right: 20px; /* Space for dropdown arrow */
+}
+
+.centered-container select:focus {
+    outline: none;
+    border-color: var(--link-color);
+    box-shadow: 0 0 5px var(--link-color);
 }
 
 .centered-container button {
     background-color: var(--tertiary-bg-color);
-    padding: var(--element-padding);
-    margin: var(--element-drastic-margin);
-    margin-bottom: var(--element-margin);
-    border: 2px double var(--main-border-color);
+    cursor: pointer;
 }
 
 .centered-container button:hover {
     background-color: var(--secondary-bg-color);
-    padding: var(--element-padding);
-    margin: var(--element-drastic-margin);
-    margin-bottom: var(--element-margin);
-    border: 2px double var(--main-border-color);
+    transform: scale(1.02); /* Add slight scale effect */
 }
 
-.centered-container label {
-    display: inline-block;
-    padding: var(--element-padding);
-    margin: var(--element-margin);
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.centered-container input[type=datetime-local] {
-    background-color: var(--secondary-bg-color);
-    border:none 2px black;
-    padding: var(--element-padding);
-    margin: var(--element-margin);
-    width: 100%;
+.centered-container button:disabled {
+    background-color: var(--main-border-color);
+    color: #888;
+    cursor: not-allowed;
+    border: 1px solid #888;
+    transform: none;
 }
 
 .error {
     color: var(--error-color);
-    font-weight: 900;
+    font-weight: bold;
     text-align: center;
 }
 
-.big {
-    font-size: 8em;
-    margin: 0;
-}
-
-.medium {
-    font-size: 5em;
-    margin: 0;
-}
-
-.small {
-    font-size: 2em;
-    margin: 0;
-}
-
 .link {
-    font-size: 1em;
     color: var(--link-color);
+    text-decoration: none;
 }
 
 .action {
-    background-color: gold;
+    background-color: var(--important-bg-color);
     display: inline-block;
     padding: var(--element-padding);
     margin: var(--element-drastic-margin);
     text-align: center;
-    border: 2px double var(--main-border-color);
-    text-decoration: none;
+    border-radius: 5px;
     text-transform: uppercase;
-    font-size: 0.98em;
-    color: black;
-    font-weight: 900;
+    font-size: 1em;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
 }
 
 .action:hover {
-    background-color: var(--important-bg-color);
+    background-color: var(--secondary-bg-color);
 }
 
-.centered {
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: var(--main-bg-color);
+    border: 1px solid var(--main-border-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form input, form select, form button {
+    margin: var(--element-margin) 0;
+    padding: var(--element-padding);
+    font-size: 1em;
+    border: 1px solid var(--main-border-color);
+    border-radius: 5px;
+    width: 100%;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+form input:focus, form select:focus {
+    outline: none;
+    border-color: var(--link-color);
+    box-shadow: 0 0 5px var(--link-color);
+}
+
+form button {
+    background-color: var(--tertiary-bg-color);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+form button:hover {
+    background-color: var(--secondary-bg-color);
+    transform: scale(1.02);
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--main-border-color);
+}
+
+form p {
+    font-size: 0.9em;
+    margin: var(--element-margin) 0;
     text-align: center;
 }
 
-.button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+form p[style*="color: red"] {
+    color: var(--error-color);
+}
+
+form p[style*="color: green"] {
+    color: var(--link-color);
 }
