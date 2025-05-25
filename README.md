@@ -1,8 +1,8 @@
-# examiverse-frontend
-TODO LIST:
-1. Login Route
-2. Exams Route
-3. Exam Access & View Routes (multiple routes, one access route and one view route for each created exam)
-4. Exam Creation Route (for Teacher role)
-5. Exam Attendance Route (for Student role)
-6. Exam Participants Route
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
